@@ -26,13 +26,12 @@ const UserIngredient = db.define('user_ingredien', {
     ingredientId: {
         type: DataTypes.UUID,
         allowNull: false,
-        field: 'recipe_id',
+        field: 'ingredient_id',
         references: {
             key: 'id',
             model: Ingredients
         }
-    }, 
-    
+    }
 })
 
 module.exports = UserIngredient
