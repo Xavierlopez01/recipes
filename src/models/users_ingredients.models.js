@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 
 const db = require('../utils/database')
-const Recipes = require('./recipes.models')
+const Ingredients = require('./ingredients.models')
 const Users = require('./users.models')
 
 const UserIngredient = db.define('user_ingredien', {
@@ -29,7 +29,7 @@ const UserIngredient = db.define('user_ingredien', {
         field: 'recipe_id',
         references: {
             key: 'id',
-            model: Recipes
+            model: Ingredients
         }
     }, 
     
