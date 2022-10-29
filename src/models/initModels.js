@@ -7,7 +7,7 @@ const Recipes = require('./recipes.models')
 const Types = require('./types.models')
 const UsersIngredients = require('./users_ingredients.models')
 const UsersRecipes = require('./users_recipes.models')
-const Categories = require('./categories.models')
+
 
 
 const initModels = () => {
@@ -40,7 +40,7 @@ const initModels = () => {
     Ingredients.belongsTo(Types)
 
     //*Recipes 1:M RecipesIngredients
-    Recipes.hasMany.apply(RecipeIngredients)
+    Recipes.hasMany(RecipeIngredients)
     RecipeIngredients.belongsTo(Recipes)
 
     //* Ingredients 1:M RecipesIngrediens
