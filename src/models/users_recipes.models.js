@@ -4,7 +4,7 @@ const db = require('../utils/database')
 const Recipes = require('./recipes.models')
 const Users = require('./users.models')
 
-const userRecipe = db.define('user_recipe', {
+const UsersRecipes = db.define('user_recipe', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
@@ -35,4 +35,4 @@ const userRecipe = db.define('user_recipe', {
     }
 })
 
-module.exports = userRecipe
+module.exports = UsersRecipes

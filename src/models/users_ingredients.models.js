@@ -4,7 +4,7 @@ const db = require('../utils/database')
 const Ingredients = require('./ingredients.models')
 const Users = require('./users.models')
 
-const UserIngredient = db.define('user_ingredien', {
+const UsersIngredients = db.define('user_ingredients', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
@@ -34,4 +34,4 @@ const UserIngredient = db.define('user_ingredien', {
     }
 })
 
-module.exports = UserIngredient
+module.exports = UsersIngredients
