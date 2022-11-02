@@ -14,6 +14,8 @@ const Categories = db.define('categories',{
         allowNull: false,
         unique: true
     }
+}, {
+    timestamps: false
 })
 
 module.exports = Categories

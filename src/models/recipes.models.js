@@ -4,7 +4,6 @@ const db = require('../utils/database')
 const Users = require('./users.models')
 const Categories = require('./categories.models')
 
-
 const Recipes = db.define('recipes', {
     id: {
         type: DataTypes.UUID,
@@ -14,6 +13,7 @@ const Recipes = db.define('recipes', {
     title: {
         type: DataTypes.STRING,
         allowNull: false,
+        //? Min validate 
         validate: {
             min: 5
         }
@@ -22,10 +22,10 @@ const Recipes = db.define('recipes', {
         type: DataTypes.TEXT,
         allowNull: false
     },
-    urlImg: {
+    urlImg : {
         type: DataTypes.STRING,
         validate: {
-            isUrl: true
+            //isUrl: true
         },
         field: 'url_img'
     },
@@ -37,7 +37,10 @@ const Recipes = db.define('recipes', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    userId: {
+    //? las FK de sequelize tienen ciertas reglas:
+    //? Debe contener la tabla a la que hace referencia en singular
+    //? Debe terminar con el subfijo Id
+    userId : {
         type: DataTypes.UUID,
         allowNull: false,
         field: 'user_id',
@@ -46,26 +49,24 @@ const Recipes = db.define('recipes', {
             model: Users
         }
     },
-    categoryId: {
+    categoryId : {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'category_id',
+        field: 'category_id', 
         references: {
             key: 'id',
             model: Categories
-        },
-        origin: {
-            type: DataTypes.STRING
-        },
-        likes: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
         }
+    },
+    origin: {
+        type: DataTypes.STRING,
+    },
+    likes: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
     }
-
-}, {
-    timestamps: false
 })
+
 
 module.exports = Recipes
