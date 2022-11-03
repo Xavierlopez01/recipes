@@ -1,18 +1,18 @@
-const { DataTypes } = require('sequelize')
+const {DataTypes} = require('sequelize')
 
 const db = require('../utils/database')
-const Ingredients = require('./ingredients.models')
 const Users = require('./users.models')
+const Ingredients = require('./ingredients.models')
 
-const UsersIngredients = db.define('user_ingredients', {
+const UsersIngredients = db.define('users_ingredients', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false
     },
-    amount: {
+    amount : {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull:false
     },
     userId: {
         type: DataTypes.UUID,
@@ -35,3 +35,4 @@ const UsersIngredients = db.define('user_ingredients', {
 })
 
 module.exports = UsersIngredients
+

@@ -1,10 +1,9 @@
-const { DataTypes, UUID } = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 const db = require('../utils/database')
 const Recipes = require('./recipes.models')
 
-
-const Instructions = db.define('instrutions', {
+const Instructions = db.define('instructions', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
@@ -22,11 +21,13 @@ const Instructions = db.define('instrutions', {
         type: DataTypes.UUID,
         allowNull: false,
         field: 'recipe_id',
-        references:{
+        references: {
             key: 'id',
             model: Recipes
         }
     }
 })
 
-module.exports= Instructions
+
+module.exports = Instructions
+

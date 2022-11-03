@@ -1,30 +1,26 @@
-const router = require('express').Router()
-const passport = require('passport')
+const router = require("express").Router();
+const passport = require("passport");
+const typeServices = require("./types.services");
+const adminMiddleware = require("../middlewares/role.middleware");
 
-const recipeServices = require('./recipes.services')
-require('../middlewares/auth.middleware')(passport)
+require("../middlewares/auth.middleware")(passport);
+//? /
+//? /:id
 
+router.route("/")
+  .get(typeServices.getAllTypes)
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    adminMiddleware,
+    typeServices.postType
+  ); 
 
+router.route("/:id")
+  .get(typeServices.getTypeById)
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    adminMiddleware,
+    typeServices.deleteType
+  ); 
 
-//? /recipes 
-//? /recipes/:recipe_id
-
-router.route('/')
-    .get(recipeServices.getAllRecipes)
-    .post(
-        passport.authenticate('jwt', {session: false}),
-        recipeServices.createRecipe
-    )
-
-router.route('/:recipe_id')
-    .get(recipeServices.getRecipeById)
-    .patch(
-        passport.authenticate('jwt', {session: false}),
-        recipeServices.patchRecipe
-    )
-    .delete(
-        passport.authenticate('jwt', {session: false}),
-        recipeServices.deleteRecipe
-    )
-
-module.exports = router
+module.exports = router;

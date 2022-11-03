@@ -11,9 +11,10 @@ const Ingredients = db.define('ingredients', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull:false,
         unique: true
-    },
+    }, //? holaGrupoComoEstan -> Javascript
+       //? hola_gripo_como_estan -> SQL
     typeId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -23,12 +24,12 @@ const Ingredients = db.define('ingredients', {
             model: Types
         }
     },
-    urlImg: {
+    urlImg : {
         type: DataTypes.STRING,
         field: 'url_img',
         validate: {
-            // isUrl: true
-          }      
+            //isUrl: true
+        }
     }
 }, {
     timestamps: false

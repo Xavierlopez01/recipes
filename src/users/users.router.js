@@ -6,9 +6,6 @@ const userServices = require('./users.services')
 require('../middlewares/auth.middleware')(passport)
 
 
-
-
-
 //? rutas raiz
 
 router.get('/', userServices.getAllUsers)
@@ -38,17 +35,21 @@ router.route('/me')
         userServices.deleteMyUser
     )
 
+//TODO Agregar la ruta para obtener mis recetas
+
 //? /api/v1/users/:id
 router.route('/:id')
     .get(userServices.getUserById)
     .patch(
         passport.authenticate('jwt', {session: false}),
         adminValidate,
-        userServices.patchUser)
+        userServices.patchUser
+    )
     .delete(
         passport.authenticate('jwt', {session: false}),
         adminValidate,
-        userServices.deleteUser)
+        userServices.deleteUser
+    )
 
 
 
