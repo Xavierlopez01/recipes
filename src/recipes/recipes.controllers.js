@@ -1,5 +1,5 @@
 const uuid = require('uuid')
-const {Op} = require('sequelize')
+const { Op } = require('sequelize')
 
 const Recipes = require('../models/recipes.models')
 const Users = require('../models/users.models')
@@ -109,7 +109,7 @@ const deleteRecipe = async (id) => {
     return data
 }
 
-const getMyRecipes = async(userId) => {
+const getMyRecipes = async (userId) => {
     const userIngredients = await UsersIngredients.findAll({
         attributes: ['ingredientId'],
         where: {
@@ -148,6 +148,7 @@ module.exports = {
     getRecipeById,
     createRecipe,
     updateRecipe,
-    deleteRecipe
+    deleteRecipe, 
+    getAllRecipes
 }
 
